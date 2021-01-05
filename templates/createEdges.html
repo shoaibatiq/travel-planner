@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com" />
+    
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <!-- CSS only -->
+    <link rel="icon" 
+    type="image/png" 
+    href="{{ url_for('static', filename='icons/favicon.png') }}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+  </head>
+  <body>
+    <div class="s003">
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        <div style="display: block;">
+          
+                  
+        <div style="display: block;">
+          {% for entry in form.edgesData %}
+          
+            {{entry()}}
+   
+          {% endfor %}
+          <hr style="    margin-left: 40px;
+          color: #fff;">
+          <div class="calcDiv">
+            <div class="shortestFrom">
+              {{ form.shortestFrom(placeholder = "Calculate distance From", class="input") }}
+            </div>
+            <div class="shortestTo">
+              {{ form.shortestTo(placeholder = "Calculate distance To", class="input") }}
+            </div>
+          
+          </div>
+          
+          <div class="bthOuter"><div class="submitBtn"><button type="submit" class="btnSubmit">Submit</button></div>
+        </div><br>
+      
+      </div>
+       
+        
+      </form>
+      {% for mess in get_flashed_messages() %}
+      <div class="alert alert-dark" role="alert" style="width: 880px;">
+        <h4>Optimal Path:</h4>
+        <div style="text-align: center;">{{ mess }}</div>
+        
+      </div>
+      {% endfor %}
+    </div>
+    <script src="js/extention/choices.js"></script>
+    <script>
+      const choices = new Choices("[data-trigger]", {
+        searchEnabled: false,
+        itemSelectText: "",
+      });
+    </script>
+
+    <script>
+      inputs = document.getElementsByTagName('input')
+      for (let input of inputs){
+        if (input.name.includes("source")){
+          input.placeholder = "Vertex1,Vertex2"
+        }
+        if (input.name.includes("dest")){
+          input.placeholder = "Weight"
+        }
+      }
+    </script>
+  </body>
+  <!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

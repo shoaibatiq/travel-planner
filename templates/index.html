@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link rel="icon" 
+    type="image/png" 
+    href="{{ url_for('static', filename='icons/favicon.png') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="s003">
+      <form  method="POST"> 
+        {{ form.hidden_tag() }}
+        <div class="inner-form">
+          
+          <div class="input-field second-wrap">
+            {{ form.edges(class="control-label", id = "search", type = "number", placeholder = "Number of Edges?") }}
+          </div>
+          <div class="input-field third-wrap">
+            <button class="btn-search" type="submit">
+              <span style="font-family: monospace;">GO</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="js/extention/choices.js"></script>
+    <script>
+      const choices = new Choices('[data-trigger]',
+      {
+        searchEnabled: false,
+        itemSelectText: '',
+      });
+
+    </script>
+  </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
